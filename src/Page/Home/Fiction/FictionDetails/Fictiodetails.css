@@ -1,0 +1,18 @@
+.vertical-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+    margin-left: 10px;
+   
+    /* Adjust the spacing between form elements */
+  }
+  .form-div{
+    background-color: salmon;
+   
+  }
+  

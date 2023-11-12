@@ -1,0 +1,38 @@
+.search{
+    height: 48px;
+    width: 500px;
+  
+  }
+  
+  /* Package.css */
+  .search-field-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* You can also use text-align: center; if you prefer */
+  }
+.logo{
+  height: 50px;
+  width: 50px;
+  
+}
+@media screen and (max-width: 768px) {
+    .search {
+      height: 48px;
+      width: 150px; /* Full width on screens smaller than 768px */
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .search {
+      height: 48px;
+      width: 250px; /* 50% width on screens between 769px and 1024px */
+    }
+  }
+  
+  @media screen and (min-width: 1025px) {
+    .search {
+      height: 48px;
+      width: 500px;/* 30% width on screens larger than 1024px */
+    }
+  }
