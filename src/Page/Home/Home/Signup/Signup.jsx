@@ -3,35 +3,105 @@ import './Signup.css'
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../providers/AuthProvider';
+import { getAuth, updateProfile } from 'firebase/auth';
+import { app } from '../../../../Firebase/firebase.config';
+
 
 const Signup = () => {
-  
+    const auth= getAuth(app)
     // eslint-disable-next-line no-unused-vars
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const navigate=useNavigate()
-    const {createUser}=useContext(AuthContext);
-    const [signUpError,setSignUpError]=useState('')
-    const onSubmit=data=>{
-         console.log(data)
-         createUser(data.email,data.password)
-         .then(result=>{
-            const loggedUser= result.user;
-            console.log(loggedUser);
-            navigate('/')
-         })
-         .catch(error=>{
-            console.log(error)
-            setSignUpError(error.message)
-         })
-        
-    }
+    const navigate = useNavigate()
+    const { createUser,updateUser,verifyEmail } = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('')
+    const img_hosting_token = '6fb68cbd4232c1e20fa193c68ca16ae7';
+const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`;
+    // const onSubmit = data => {
+    //     console.log(data)
+    //     createUser(data.email, data.password)
+    //         .then(result => {
+    //             const loggedUser = result.user;
+    //             console.log(loggedUser);
+    //             navigate('/')
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //             setSignUpError(error.message)
+    //         })
+
+    // }
+    
+
+    const handleSignup = async (data) => {
+      console.log(data);
+      setSignUpError('');
+  
+      try {
+        // Create user in Firebase
+        const user = await createUser(data.email, data.password);
+  
+        // Verify email
+        await verifyEmail(user);
+  
+        // Navigate to home page
+        navigate('/home');
+  
+        console.log('Email verified');
+  
+        // Create user info for Firebase update
+        const userInfo = {
+          displayName: data.name,
+        };
+  
+        // Update Firebase user profile
+        await updateUser(userInfo);
+  
+        // Upload image to imgBB
+        if (data.profilePicture) {
+          const formData = new FormData();
+          formData.append('image', data.profilePicture[0]);
+  
+          const response = await fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData,
+          });
+  
+          const imgBBData = await response.json();
+  
+          // Update Firebase user profile with image URL
+          await updateProfile(auth.currentUser, { photoURL: imgBBData.data.url });
+        }
+  
+        // Save user data to your server
+        saveUser(data.name, data.email);
+  
+      } catch (error) {
+        console.log(error);
+        setSignUpError(error.message);
+      }
+    };
+  
+    const saveUser = (name, email) => {
+      const user = { name, email };
+      fetch('http://localhost:5000/users', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('saveuser', data);
+        });
+    };
     return (
         <>
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col lg:flex-row-reverse bg-base-200">
 
-                    <div className="card md:w-1/2 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+                    <div className="card md:w-1/2 flex-shrink-0 w-full max-w-sm shadow-2xl bg-green-100">
+                        <form className="card-body" onSubmit={handleSubmit(handleSignup)}>
                             <div className="form-control " >
                                 <label className="label" htmlFor="name">
                                     <span className="label-text">Name</span>
@@ -54,6 +124,11 @@ const Signup = () => {
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
+                            </div>
+                            <div className="form-control w-full max-w-xs">
+                                <label className="label"><span className="label-text">Profile Picture</span></label>
+                                <input type="file" {...register("profilePicture")} accept="image/*" className="input input-bordered w-full max-w-xs" />
+                                {errors.profilePicture && <p className='text-rose-600'>{errors.profilePicture?.message}</p>}
                             </div>
                             <div className="form-control mt-6">
 

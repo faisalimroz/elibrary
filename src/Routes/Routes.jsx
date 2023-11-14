@@ -14,6 +14,8 @@ import Novel from "../Page/Home/Novel/Novel";
 import Bookdetail from "../Page/Home/Books/Bookdetail/Bookdetail";
 import FictionDetails from "../Page/Home/Fiction/FictionDetails/FictionDetails";
 import Payment from "../Page/Home/Payment/Payment";
+import Profile from "../Layout/Profile";
+import UserProfile from "../Profile/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -75,4 +77,14 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/profile',
+    element:<Profile></Profile>,
+    children: [
+      {
+        path: 'userprofile', // Remove the leading slash
+        element: <UserProfile></UserProfile>
+      }
+    ]
+  }
 ]);

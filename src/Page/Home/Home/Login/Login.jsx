@@ -25,8 +25,8 @@ const Login = () => {
     }
     return (
         <>
-        <div className="hero min-h-screen ">
-            <div className="hero-content flex-col lg:flex-row-reverse bg-base-200">
+        <div className="hero min-h-screen  ">
+            <div className="hero-content flex-col lg:flex-row-reverse bg-green-100">
 
                 <div className="card md:w-1/2 flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form className="card-body" onSubmit={handleSubmit(onSubmits)}>
@@ -50,7 +50,7 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
 
-                            <input className="btn btn-primary" type="submit" value="Signup" />
+                            <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                         <div>
                         {loginError && <p>{loginError}</p>}

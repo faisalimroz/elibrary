@@ -1,0 +1,44 @@
+/* Addreview.css */
+
+.review-card {
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .star {
+    font-size: 24px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .review-message {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+
+  }
+  
+  .submit-review {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Replace with your desired button color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .review-card {
+      max-width: 100%;
+    }
+  }
+  

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './Contactus.css'
 import ContactusBanner from './ContactusBanner/ContactusBanner';
 import ContactusForm from './ContactusForm/ContactusForm';
+import Addreview from '../../../Review/Addreview/Addreview';
 
 const Contactus = () => {
     return (
@@ -39,7 +40,7 @@ const Contactus = () => {
 
             </div>
             <div className='mb-5'>
-                <ContactusForm></ContactusForm>
+               <Addreview></Addreview>
             </div>
         </div>
     );
