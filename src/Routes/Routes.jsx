@@ -16,6 +16,14 @@ import FictionDetails from "../Page/Home/Fiction/FictionDetails/FictionDetails";
 import Payment from "../Page/Home/Payment/Payment";
 import Profile from "../Layout/Profile";
 import UserProfile from "../Profile/UserProfile/UserProfile";
+import PrivateRoute from "./PrivateRoute";
+import Secret from "../Page/Shared/Secret/Secret";
+import AllUsers from "../Profile/UserProfile/AllUsers/AllUsers";
+import AddItems from "../Profile/UserProfile/AddItems/AddItems";
+import AdminHome from "../Profile/UserProfile/AdminHome/AdminHome";
+import Manageitem from "../Profile/UserProfile/Manageitem/Manageitem";
+import Order from "../Profile/UserProfile/Orders/Orders";
+import Fictionbest from "../Page/Home/Fiction/Fictionbest/Fictionbest";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +55,11 @@ export const router = createBrowserRouter([
         path: '/fiction/:fid',
         element:<FictionDetails></FictionDetails>
       },
+      {
+        path: '/bestfiction/:bfid',
+        element:<Fictionbest></Fictionbest>
+      },
+      
        {
         path: '/nonfiction',
         element: <Nonfiction></Nonfiction>
@@ -74,16 +87,40 @@ export const router = createBrowserRouter([
       {
         path: '/payment',
         element: <Payment></Payment>
+      },
+      {
+        path: '/secret',
+        element: <PrivateRoute><Secret></Secret></PrivateRoute>
       }
     ]
   },
   {
     path: '/profile',
-    element:<Profile></Profile>,
+    element:<PrivateRoute><Profile></Profile></PrivateRoute>,
     children: [
       {
         path: 'userprofile', // Remove the leading slash
         element: <UserProfile></UserProfile>
+      },
+      {
+        path: 'allusers', // Remove the leading slash
+        element: <AllUsers></AllUsers>
+      },
+      {
+        path: 'additems', // Remove the leading slash
+        element: <AddItems></AddItems>
+      },
+      {
+        path: 'adminhome', // Remove the leading slash
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: 'manageitems', // Remove the leading slash
+        element: <Manageitem></Manageitem>
+      },
+      {
+        path: 'orders', // Remove the leading slash
+        element: <Order></Order>
       }
     ]
   }

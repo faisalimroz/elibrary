@@ -31,12 +31,13 @@ const [error, setError] = useState(null);
                     
                     console.log('current user',currentUser)
                     localStorage.setItem('access-token',data.data.token)
+                    setLoading(false)
                 })
             }
             else{
                 localStorage.removeItem('access-token')
             }
-            setLoading(false)
+         
            })
            return ()=>{
             return unsubscribe()

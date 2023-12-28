@@ -4,7 +4,8 @@
 import Banner from "../Banner/Banner";
 import Books from "../Books/Books";
 import Counterup from "./Counterup/Counterup";
-import Review from "../Home/Review/Review"
+
+import UserReview from "../../../Review/UserReview/UserReview";
 // import ClientReview from '../../../Review/ReviewCard/ClientReview'
 
 
@@ -15,7 +16,8 @@ const Home = () => {
             <Banner></Banner>
             <Books></Books>
             <Counterup></Counterup>
-             <Review></Review>   
+            <UserReview></UserReview>
+             {/* <Review></Review>    */}
         </div>
     );
 };

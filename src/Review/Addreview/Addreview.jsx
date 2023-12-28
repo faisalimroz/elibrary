@@ -10,6 +10,7 @@ const Addreview= () => {
 
   const { user } = useContext(AuthContext);
   const userr=user.displayName;
+  const photo=user.photoURL;
   console.log(userr)
 
   const handleStarClick = (newRating) => {
@@ -37,7 +38,8 @@ const Addreview= () => {
       body: JSON.stringify({
         rating,
         reviewMessage,
-        userr
+        userr,
+        photo
       }),
     }).then((response) => {
       if (response.ok) {

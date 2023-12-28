@@ -11,7 +11,8 @@ import { AuthContext } from '../../../providers/AuthProvider';
 const Checkoutform = ({ totalPrice}) => {
     const { user } = useContext(AuthContext)
     const name=user.email;
-    console.log(name)
+    
+    console.log('pronle',name)
     console.log(totalPrice)
     const [clientSecret, setClientSecret] = useState('')
     const stripe = useStripe();
@@ -38,7 +39,7 @@ const Checkoutform = ({ totalPrice}) => {
           console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         })
-      }, [totalPrice,name]);// Empty dependency array means this effect runs once when the component mounts
+      }, [ totalPrice,name ]);// Empty dependency array means this effect runs once when the component mounts
 
     const handleSubmit = async (event) => {
         // Block native form submission.
@@ -91,7 +92,9 @@ const Checkoutform = ({ totalPrice}) => {
              
               transactionId:transactionId,
               date: new Date(),
-              orderStatus: 'service pending'
+              orderStatus: 'service pending',
+              user:name
+
             
             }
             axiosSecure.post('/payments',payment)

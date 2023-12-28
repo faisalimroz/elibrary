@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import './Fictiodetails.css'
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const FictionDetails = () => {
   const [fiction, setFiction] = useState('')
   const { fid } = useParams();
   const [members, setMembers] = useState(1);
   const [pricePerMember, setPricePerMember] = useState(0);
-
-
+  const {user}=useContext(AuthContext);
+  const name=user.email;
+  
   const handleAddMember = () => {
     setMembers(members + 1);
   };
@@ -29,7 +31,7 @@ const FictionDetails = () => {
 
 
     // Redirect to the Payment component with the totalPrice as a URL parameter
-    navigate(`/payment?totalPrice=${totalPrice}`);
+    navigate(`/payment?totalPrice=${totalPrice}&&email=${name}`);
     // You can handle form submission here
 
     console.log('Members:', members);
