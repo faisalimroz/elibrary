@@ -15,7 +15,8 @@ const Navbar = () => {
     }
     const {logOut}=useContext(AuthContext)
     const {user}=useContext(AuthContext)
-    
+    const photo=user?.photoURL;
+    console.log('photourl',photo)
     console.log('phoyo',user);
     
     return (
@@ -45,7 +46,7 @@ const Navbar = () => {
                                         <div  className="dropdown dropdown-end  h-20">
                                             <label  tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                                 <div className="w-10 rounded-full">
-                                                    <img src={user.photoURL} alt='ddd' />
+                                                    <img src="https://i.ibb.co/q0ZsqHf/image.png" alt='ddd' />
                                                 </div>
                                             </label>
                                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -85,7 +86,7 @@ const Navbar = () => {
                                         <div className="dropdown dropdown-end  ">
                                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                                 <div className="w-10 rounded-full ">
-                                                    <img src={user.photoURL} alt='ddd' />
+                                                <img src="https://i.ibb.co/q0ZsqHf/image.png" alt='ddd' />
                                                 </div>
                                             </label>
                                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">

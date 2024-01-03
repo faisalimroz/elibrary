@@ -24,6 +24,14 @@ import AdminHome from "../Profile/UserProfile/AdminHome/AdminHome";
 import Manageitem from "../Profile/UserProfile/Manageitem/Manageitem";
 import Order from "../Profile/UserProfile/Orders/Orders";
 import Fictionbest from "../Page/Home/Fiction/Fictionbest/Fictionbest";
+import Nonfictiondetail from "../Page/Home/Nonfiction/Nonfictiondetail/Nonfictiondetail";
+import Nonfictionbest from "../Page/Home/Nonfiction/Nonfictiondetail/Nonfictionbest/Nonfictionbest";
+import Biographydetail from "../Page/Home/Biography/Biographydetail/Biographydetail";
+import Biographybest from "../Page/Home/Biography/Biographydetail/Biographybest/Biographybest";
+import Noveldetail from "../Page/Home/Novel/Noveldetail/Noveldetail";
+import Novelbest from "../Page/Home/Novel/Noveldetail/Novelbest/Novelbest";
+import Kidsdetail from "../Page/Home/Kids/Kidsdetail/Kidsdetail";
+import Kidsbest from "../Page/Home/Kids/Kidsdetail/Kidsbest/Kidsbest";
 
 export const router = createBrowserRouter([
   {
@@ -65,12 +73,48 @@ export const router = createBrowserRouter([
         element: <Nonfiction></Nonfiction>
       },
       {
+        path: '/nonfiction/:nid',
+        element:<Nonfictiondetail></Nonfictiondetail>
+      },
+      {
+        path: '/bestnonfiction/:nfid',
+        element:<Nonfictionbest></Nonfictionbest>
+      },
+      {
         path: '/biography',
         element: <Biography></Biography>
       },
       {
+        path: '/biography/:bid',
+        element:<Biographydetail></Biographydetail>
+      },
+      {
+        path: '/bestbiography/:bbid',
+        element:<Biographybest></Biographybest>
+      },
+      {
         path: '/novel',
         element: <Novel></Novel>
+      },
+      {
+        path: '/novel/:nlid',
+        element: <Noveldetail></Noveldetail>
+      },
+      {
+        path: '/bestnovel/:bnlbid',
+        element:<Novelbest></Novelbest>
+      },
+      {
+        path: '/kids',
+        element: <Kids></Kids>
+      },
+      {
+        path: '/kids/:kid',
+        element: <Kidsdetail></Kidsdetail>
+      },
+      {
+        path: '/bestkids/:bkid',
+        element:<Kidsbest></Kidsbest>
       },
       {
         path: '/signup',
