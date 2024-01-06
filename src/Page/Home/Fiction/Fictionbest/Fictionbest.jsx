@@ -21,13 +21,13 @@ const Fictionbest = () => {
             setMembers(members - 1);
         }
     };
-
+   const id=bfid
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const totalPrice = members * fiction.price;
-        navigate(`/payment?totalPrice=${totalPrice}&email=${name}&fid=${bfid}`);
+        navigate(`/payment?totalPrice=${totalPrice}&email=${name}&id=${id}`);
         console.log('Members:', members);
         console.log('Total Price:', totalPrice);
     };
@@ -89,7 +89,7 @@ const Fictionbest = () => {
 
                         <form onSubmit={handleSubmit} className="vertical-form">
                             <div className="form-group">
-                                <label>Number of Members:</label>
+                                <label>Number of Books:</label>
                                 <button type="button" onClick={handleRemoveMember}>
                                     -
                                 </button>

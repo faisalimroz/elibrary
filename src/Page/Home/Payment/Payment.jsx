@@ -8,7 +8,7 @@ const Payment = () => {
     
     const location = useLocation();
     const totalPrice = new URLSearchParams(location.search).get('totalPrice');
-    const id = new URLSearchParams(location.search).get('fid');
+    const id = new URLSearchParams(location.search).get('id');
 
     return (
         <div>

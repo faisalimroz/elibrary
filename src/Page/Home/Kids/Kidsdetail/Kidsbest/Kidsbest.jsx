@@ -2,12 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../../providers/AuthProvider';
+import axios from 'axios';
 const Kidsbest = () => {
     const [kids, setkids] = useState('')
     const { bkid } = useParams();
     const [members, setMembers] = useState(1);
     const [pricePerMember, setPricePerMember] = useState(0);
     const { user } = useContext(AuthContext);
+    const [paymentData, setPaymentData] = useState();
     const name = user.email;
 
     const handleAddMember = () => {
@@ -27,10 +29,11 @@ const Kidsbest = () => {
         // Calculate the total price based on the number of members and price per member
         const totalPrice = members * kids.price;
 
-
+        
+   const id=bkid
 
         // Redirect to the Payment component with the totalPrice as a URL parameter
-        navigate(`/payment?totalPrice=${totalPrice}&&email=${name}`);
+        navigate(`/payment?totalPrice=${totalPrice}&&email=${name}&id=${id}`);
         // You can handle form submission here
 
         console.log('Members:', members);
@@ -39,7 +42,7 @@ const Kidsbest = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bestkids/${bfid}`)
+        fetch(`http://localhost:5000/bestkids/${bkid}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch kids details');
@@ -55,6 +58,19 @@ const Kidsbest = () => {
                 // Handle the error, such as showing an error message
             });
     }, [bkid]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/order/${user.email}/${bkid}`);
+                setPaymentData(response.data);
+                console.log('Payment Data:', response.data.id);
+            } catch (error) {
+                console.error('Error fetching payment data:', error);
+            }
+        };
+
+        fetchData();
+    }, [name, bkid]);
 
 
 
@@ -70,10 +86,18 @@ const Kidsbest = () => {
                         <h2 className="blog-title font-bold">{kids.name}</h2>
                         <h2 className="blog-title font-bold">{kids.price}</h2>
 
-                        <button type="button" className="bg-green-300 p-3"><a target="_blank" href={kids.pdflink}>PDF</a></button>
-                         <div className="video-container">
-                            <iframe width="420" height="315" src="https://www.youtube.com/embed/lNKwpvzdHik?si=G4AcOZynGLzZ_jc2" title="YouTube video player"frameborder="0" allowfullscreen></iframe>
-                        </div> 
+                        <button type="button" className="bg-yellow-300 mt-1 mb-3 rounded-lg  p-3">
+                            <a target="_blank" href={paymentData?.id === bkid ? kids.pdflink : '#'}>
+                                PDF
+                            </a>
+                        </button>
+                        <div className="video-container">
+                            {paymentData?.id === bkid ? (
+                                <iframe width="420" height="315" src={kids.videolink} frameborder="0" allowfullscreen></iframe>
+                            ) : (
+                                <p>Video link disabled</p>
+                            )}
+                        </div>
 
                     </div>
 

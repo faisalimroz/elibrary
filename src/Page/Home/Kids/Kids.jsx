@@ -1,4 +1,4 @@
-
+import './Kids.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -40,7 +40,7 @@ const Kids= () => {
                 <div id='slider' className='w-full h-[400px] overflow-x-scroll overflow-y-hidden scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
                     {kidsBooks.map((kidsBook) => (
                         <div key={kidsBook._id} className='inline-block'>
-                            <Link to={`/kids/${kidsBook._id}`}>
+                            <Link to={`/bestkids/${kidsBook._id}`}>
                                 <img className='w-[250px] h-[300px]  mr-2 ml-2 inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300' src={kidsBook.img} alt='books' />
                             </Link>
                             <h2 className='w-[250px] h-[150px] text-xl text-center overflow-hidden whitespace-normal'>

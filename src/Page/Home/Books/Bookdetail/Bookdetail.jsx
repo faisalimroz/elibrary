@@ -1,19 +1,19 @@
 
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 
-const Bookdetail = () => {
-    const {id} = useParams();
+// const Bookdetail = () => {
+//     const {id} = useParams();
     
-    return (
-        <div>
-            <div>
-                <h1>Book Details</h1>
-                <p>Book ID: {id}</p>
+//     return (
+//         <div>
+//             <div>
+//                 <h1>Book Details</h1>
+//                 <p>Book ID: {id}</p>
          
-            </div>
-        </div>
-    );
-};
+//             </div>
+//         </div>
+//     );
+// };
 
-export default Bookdetail;
+// export default Bookdetail;

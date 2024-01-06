@@ -6,12 +6,12 @@ import Home from "../Page/Home/Home/Home";
 import Signup from "../Page/Home/Home/Signup/Signup";
 import Login from "../Page/Home/Home/Login/Login";
 import Contactus from "../Page/Home/Contactus/Contactus";
-import Kids from "../Page/Home/Home/Kids/Kids";
+
 import Fiction from "../Page/Home/Fiction/Fiction";
 import Nonfiction from "../Page/Home/Nonfiction/Nonfiction";
 import Biography from "../Page/Home/Biography/Biography";
 import Novel from "../Page/Home/Novel/Novel";
-import Bookdetail from "../Page/Home/Books/Bookdetail/Bookdetail";
+// import Bookdetail from "../Page/Home/Books/Bookdetail/Bookdetail";
 import FictionDetails from "../Page/Home/Fiction/FictionDetails/FictionDetails";
 import Payment from "../Page/Home/Payment/Payment";
 import Profile from "../Layout/Profile";
@@ -32,6 +32,8 @@ import Noveldetail from "../Page/Home/Novel/Noveldetail/Noveldetail";
 import Novelbest from "../Page/Home/Novel/Noveldetail/Novelbest/Novelbest";
 import Kidsdetail from "../Page/Home/Kids/Kidsdetail/Kidsdetail";
 import Kidsbest from "../Page/Home/Kids/Kidsdetail/Kidsbest/Kidsbest";
+import Kids from "../Page/Home/Kids/Kids";
+import Searchresult from "../Page/Searchresult/Searchresult";
 
 export const router = createBrowserRouter([
   {
@@ -47,10 +49,10 @@ export const router = createBrowserRouter([
         element: <Home></Home>
       },
       
-      {
-        path: '/:id',
-        element: <Bookdetail></Bookdetail>
-      },
+      // {
+      //   path: '/:id',
+      //   element: <Bookdetail></Bookdetail>
+      // },
       {
         path: '/kids',
         element: <Kids></Kids>
@@ -131,6 +133,10 @@ export const router = createBrowserRouter([
       {
         path: '/payment',
         element: <Payment></Payment>
+      },
+      {
+        path: '/search-results',
+        element: <Searchresult></Searchresult>
       },
       {
         path: '/secret',

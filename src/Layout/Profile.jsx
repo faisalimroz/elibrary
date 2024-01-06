@@ -19,16 +19,16 @@ const Profile = () => {
                     <ul className="menu p-4 w-80 min-h-full  text-base-content">
                         {/* Common links for all users */}
                         <li><Link to='orders'><img className='h-8 w-8 ' src="https://i.ibb.co/HzsfNCv/image.png" alt="salary" />Orders</Link></li>
+                        
                         {/* Links visible only for admin */}
                         {isAdmin && (
                             <>
                                 <li><Link to='adminhome'><img className='h-8 w-8 ' src="https://i.ibb.co/3frnPGp/image-removebg-preview-3.png" alt="salary" />Admin Home</Link></li>
-                                <li><Link to='additems'><img className='h-8 w-8 ' src="https://i.ibb.co/wMRZtw3/image.png " alt="salary" />Add Items</Link></li>
-                                <li><Link to='manageitem'><img className='h-8 w-8 ' src="https://i.ibb.co/zGv0jNF/content-writing.png" alt="salary" />Manage Items</Link></li>
-
+                                
                                 <li><Link to='allusers'><img className='h-8 w-8 ' src="https://i.ibb.co/stssN8z/image.png" alt="salary" />All Users</Link></li>
                             </>
                         )}
+                        <li><Link to='/'><img className='h-8 w-8 ' src="https://i.ibb.co/g9vWDd6/image.png" alt="salary" />Exit</Link></li>
                     </ul>
                 </div>
             </div>

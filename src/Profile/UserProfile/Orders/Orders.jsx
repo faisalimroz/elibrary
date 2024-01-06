@@ -9,6 +9,7 @@ const Order = () => {
     const [userHistory, setUserHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    console.log('user mail', user.email)
 
     useEffect(() => {
         const fetchUserHistory = async () => {
@@ -26,7 +27,7 @@ const Order = () => {
     }, [user.email]);
 
     return (
-        <div>
+        <div className='mt-4' style={{ border: '1px solid black', padding: '10px' }}>
             <h1>User Order History</h1>
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
@@ -35,8 +36,10 @@ const Order = () => {
                     <p>Email: {user.email}</p>
                     <ul>
                         {userHistory.map((transaction) => (
-                            <li key={transaction._id}>
-                                <p>Transaction ID: {transaction.TransactionId}</p>
+                            <li style={{ border: '1px solid black', padding: '5px' }} key={transaction._id}>
+                                <p>Transaction ID: {transaction.transactionId}</p>
+                                <p>Product ID: {transaction.id}</p>
+                                <p>Date: {transaction.date}</p>
                                 {/* Add other transaction details you want to display */}
                             </li>
                         ))}
@@ -44,6 +47,7 @@ const Order = () => {
                 </div>
             )}
         </div>
+
     );
 };
 
