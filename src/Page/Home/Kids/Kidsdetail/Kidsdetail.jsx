@@ -103,13 +103,13 @@ const KidsDetails = () => {
 
           <form onSubmit={handleSubmit} className="vertical-form">
             <div className="form-group">
-              <label>Number of Members:</label>
+              <label>Number of Books:</label>
               <button type="button" onClick={handleRemoveMember}>-</button>
               {members}
               <button type="button" onClick={handleAddMember}>+</button>
             </div>
             <div className="form-group">
-              <p className='text-1xl'>Price per Member: ${members * kids.price}</p>
+              <p className='text-1xl'>Price per Books: ${members * kids.price}</p>
 
             </div>
             <div className="form-group">

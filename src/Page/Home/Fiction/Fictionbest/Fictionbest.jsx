@@ -99,7 +99,7 @@ const Fictionbest = () => {
                                 </button>
                             </div>
                             <div className="form-group">
-                                <p className='text-1xl'>Price per Member: ${members * fiction.price}</p>
+                                <p className='text-1xl'>Price per Books: ${members * fiction.price}</p>
                             </div>
                             <div className="form-group">
                                 <button className='bg-green-200 p-2 ' type="submit">

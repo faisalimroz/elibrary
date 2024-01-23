@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './Nonfiction.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -37,7 +37,7 @@ const Nonfiction = () => {
     
                     {/* <FaBeer  /> */}
     
-                    <FontAwesomeIcon className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} size='2x' icon={faArrowLeft} style={{ color: "#183153", }} />
+                  <FontAwesomeIcon className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} size='2x' icon={faArrowLeft} style={{ color: "#183153", }} />
     
                     <div id='slider' className='w-full h-[400px] overflow-x-scroll overflow-y-hidden scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
                         {nonfictionBooks.map((nonfictionBook) => (

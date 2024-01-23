@@ -109,7 +109,7 @@ const Biographybest = () => {
                             <button type="button" onClick={handleAddMember}>+</button>
                         </div>
                         <div className="form-group">
-                            <p className='text-1xl'>Price per Member: ${members * biography.price}</p>
+                            <p className='text-1xl'>Price per Books: ${members * biography.price}</p>
 
                         </div>
                         <div className="form-group">
